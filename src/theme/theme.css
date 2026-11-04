@@ -1,0 +1,53 @@
+/* =====================================================================
+   ⭐ TEMA DO GATINDER — o ÚNICO lugar com cores e fontes.
+   Tema PROVISÓRIO. Quando chegar a identidade do gatil, troque os
+   valores abaixo (e as fontes no <head> do index.html).
+
+   Cores em "R G B" (sem vírgula) para o Tailwind aplicar transparência.
+   Dica: converta um hex em https://www.rgbtohex.net/hex-to-rgb/
+   ===================================================================== */
+:root {
+  /* Marca (degradê estilo app de match) */
+  --brand: 255 79 109;     /* #ff4f6d rosa-coral */
+  --brand-2: 255 145 77;   /* #ff914d laranja    */
+  --brand-ink: 255 255 255;/* texto sobre a marca */
+
+  /* Ações do "app" */
+  --like: 255 79 109;      /* coração */
+  --nope: 140 150 165;     /* X */
+  --ok: 34 197 94;         /* sim / disponível */
+  --warn: 245 158 11;      /* em processo */
+
+  /* Base */
+  --bg: 250 247 245;
+  --surface: 255 255 255;
+  --ink: 31 27 36;
+  --muted: 112 106 120;
+  --line: 230 224 222;
+
+  /* Fontes */
+  --font-display: 'Fredoka', 'Nunito', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+
+  /* Formas */
+  --radius-card: 28px;
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Degradê da marca, usado em botões e destaques */
+.bg-brand-gradient {
+  background-image: linear-gradient(135deg, rgb(var(--brand)) 0%, rgb(var(--brand-2)) 100%);
+}
+.text-brand-gradient {
+  background-image: linear-gradient(135deg, rgb(var(--brand)) 0%, rgb(var(--brand-2)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
