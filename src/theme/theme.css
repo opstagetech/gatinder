@@ -35,6 +35,12 @@
 
   /* Formas */
   --radius-card: 28px;
+
+  /* TV dentro da moldura de celular (medidas em pixels da TV em pé, 1080×1920).
+     A moldura cobre os cantos: a tela fica com os cantos arredondados e logos,
+     textos e QR code ficam longe deles. Ajuste aqui quando a moldura ficar pronta. */
+  --tv-corner: 110px;  /* raio dos cantos da moldura */
+  --tv-safe-x: 100px;  /* distância das laterais para o que fica nos cantos (logos, rodapé, QR) */
 }
 
 body {
