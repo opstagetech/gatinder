@@ -33,7 +33,7 @@ gatinder/
     │   ├── Login.tsx
     │   ├── CatList.tsx         # miniatura, nome, status (filtro por status)
     │   ├── CatForm.tsx         # cadastro/edição + botão "Pré-visualizar"
-    │   ├── Preview.tsx         # tela 16:9 em escala, idêntica à TV
+    │   ├── Preview.tsx         # tela da TV em pé, em escala, idêntica à TV
     │   └── Settings.tsx        # WhatsApp, tempo por gato, textos da tela institucional
     └── tv/
         ├── TvScreen.tsx        # loop, transição de "deslizar", rodapé com QR
