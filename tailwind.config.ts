@@ -15,6 +15,8 @@ export default {
         like: v('like'),
         nope: v('nope'),
         ok: v('ok'),
+        'fecovet-red': v('fecovet-red'),
+        'fecovet-green': v('fecovet-green'),
         warn: v('warn'),
         bg: v('bg'),
         surface: v('surface'),

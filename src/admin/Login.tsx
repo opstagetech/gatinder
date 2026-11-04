@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { supabase } from '../lib/supabase';
 import { friendlyError } from '../lib/api';
-import { HeartIcon } from '../components/icons';
+import { BRAND } from '../theme/brand';
 import { Button, ErrorBox, Field, inputClass } from './ui';
 
 export function Login() {
@@ -22,10 +22,9 @@ export function Login() {
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center px-5 py-10">
       <div className="mb-8 flex flex-col items-center gap-3">
-        <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-brand-gradient shadow-lg">
-          <HeartIcon className="h-11 w-11 text-white" />
-        </div>
-        <h1 className="font-display text-4xl font-bold">gatinder</h1>
+        <h1>
+          <img src={BRAND.gatinderLogo} alt="Gatinder" className="h-16 w-auto" />
+        </h1>
         <p className="text-center font-semibold text-muted">Painel da equipe</p>
       </div>
 
@@ -57,6 +56,8 @@ export function Login() {
         </Button>
         <p className="text-center text-sm text-muted">Esqueceu a senha? Peça ao responsável pelo gatil.</p>
       </form>
+
+      <img src={BRAND.fecovetLogo} alt="FecoVet" className="mt-12 h-10 w-auto opacity-90" />
     </div>
   );
 }

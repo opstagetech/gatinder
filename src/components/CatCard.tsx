@@ -1,4 +1,5 @@
 import type { CatInput } from '../types';
+import { BRAND } from '../theme/brand';
 import { formatAge, SEX_LABEL, TEMPERAMENT_EMOJI, temperamentLabel } from '../lib/format';
 import { CheckIcon, ClockIcon, FemaleIcon, HeartIcon, MaleIcon, StarIcon, XIcon } from './icons';
 
@@ -21,12 +22,10 @@ export function CatCard({ cat, photo }: { cat: CatInput; photo: string | null })
 
   return (
     <div className="absolute inset-0 overflow-hidden bg-surface font-body">
-      {/* Barra do app com o logo provisório */}
-      <div className="absolute inset-x-0 top-0 flex h-[150px] items-center justify-center gap-[18px]">
-        <div className="flex h-[84px] w-[84px] items-center justify-center rounded-[26px] bg-brand-gradient shadow-lg">
-          <HeartIcon className="h-[50px] w-[50px] text-white" />
-        </div>
-        <span className="font-display text-[76px] font-bold tracking-tight text-brand-gradient">gatinder</span>
+      {/* Barra do app: Gatinder + clínica parceira */}
+      <div className="absolute inset-x-0 top-0 flex h-[150px] items-center justify-between px-[44px]">
+        <img src={BRAND.gatinderLogo} alt="Gatinder" className="h-[92px] w-auto" />
+        <img src={BRAND.fecovetLogo} alt="FecoVet" className="h-[74px] w-auto" />
       </div>
 
       {/* O card (foto) */}

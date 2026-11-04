@@ -5,6 +5,7 @@ import { friendlyError, listCats } from '../lib/api';
 import { formatAge, SEX_LABEL, STATUS_SHORT } from '../lib/format';
 import { photoUrl, supabase } from '../lib/supabase';
 import { GearIcon, PlusIcon, TvIcon } from '../components/icons';
+import { BRAND } from '../theme/brand';
 import { Button, ErrorBox, PageHeader, Spinner } from './ui';
 
 type Filter = CatStatus | 'todos';
@@ -47,6 +48,7 @@ export function CatList() {
     <div className="min-h-[100dvh] pb-32">
       <PageHeader
         title="Gatos"
+        icon={BRAND.gatinderIcone}
         right={
           <Link
             to="/admin/config"

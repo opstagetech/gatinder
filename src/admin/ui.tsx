@@ -24,7 +24,7 @@ export function Button({
   );
 }
 
-export function PageHeader({ title, back, right }: { title: string; back?: string; right?: ReactNode }) {
+export function PageHeader({ title, back, right, icon }: { title: string; back?: string; right?: ReactNode; icon?: string }) {
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-2xl items-center gap-2 px-3">
@@ -33,6 +33,7 @@ export function PageHeader({ title, back, right }: { title: string; back?: strin
             <BackIcon className="h-7 w-7" />
           </Link>
         )}
+        {icon && <img src={icon} alt="" className="ml-1 h-9 w-9" />}
         <h1 className="flex-1 truncate font-display text-2xl font-bold">{title}</h1>
         {right}
       </div>

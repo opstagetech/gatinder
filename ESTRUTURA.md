@@ -9,13 +9,15 @@ gatinder/
 ├── tailwind.config.ts          # cores/fontes lendo as variáveis CSS do tema
 ├── .env.example                # VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY
 ├── public/
+│   ├── brand/                  # logos: Gatinder (cor/branco/ícone) e FecoVet (cor/branco)
 │   └── sw.js                   # service worker: cache das fotos e da lista (TV offline)
 ├── supabase/
 │   └── migrations/0001_gatinder.sql
 └── src/
     ├── main.tsx / App.tsx      # rotas: /admin/*, /tv
     ├── theme/
-    │   └── theme.css           # ⭐ ÚNICO lugar com cores e fontes (troca de identidade visual)
+    │   ├── theme.css           # ⭐ ÚNICO lugar com cores e fontes (troca de identidade visual)
+    │   └── brand.ts            # ⭐ caminhos dos logos
     ├── lib/
     │   ├── supabase.ts         # cliente
     │   ├── api.ts              # leitura/gravação de gatos, fotos e configurações
@@ -66,4 +68,5 @@ gatinder/
 - **Idade em meses** no banco: mostra "4 meses" pra filhote e "2 anos" pra adulto. No formulário a pessoa escolhe "meses" ou "anos".
 - **Ordem na TV:** pela ordem cadastrada, com campo `sort_order` pra fixar destaques depois.
 - Cadastro de funcionário é **fechado**: o dono cria os logins no painel do Supabase (passo a passo no fim do SQL).
+- **Identidade:** cores do logo Gatinder (degradê #FF7343 → #FE0679); FecoVet aparece como clínica parceira (topo da TV e tela de login). Verde FecoVet usado como cor de "sim/disponível".
 - **Deploy:** Netlify, conta própria do Gatinder, auto-deploy a partir do GitHub.
