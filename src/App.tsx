@@ -14,7 +14,7 @@ export default function App() {
         <h1 className="mt-4 font-display text-2xl font-bold">Falta configurar o Supabase</h1>
         <p className="mt-2 text-muted">
           Cadastre <code>VITE_SUPABASE_URL</code> e <code>VITE_SUPABASE_ANON_KEY</code> nas variáveis de ambiente do
-          Netlify e publique de novo.
+          Cloudflare Pages e publique de novo.
         </p>
       </div>
     );

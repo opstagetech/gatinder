@@ -3,10 +3,10 @@
 A TV só precisa abrir **um endereço** e ficar nele:
 
 ```
-https://SEU-SITE.netlify.app/tv
+https://SEU-SITE.pages.dev/tv
 ```
 
-(troque `SEU-SITE` pelo endereço que a Netlify der. Dá para usar um domínio próprio depois.)
+(troque `SEU-SITE` pelo endereço que o Cloudflare Pages der. Dá para usar um domínio próprio depois.)
 
 A página não tem botões. Ela passa os gatos sozinha, atualiza sozinha quando a equipe mexe no painel e continua rodando por um tempo se a internet cair.
 

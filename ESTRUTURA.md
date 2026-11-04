@@ -6,10 +6,11 @@
 gatinder/
 ├── index.html                  # translate="no", fontes
 ├── INSTRUCOES-TV.md            # Etapa 4: como abrir a /tv na TV (Fire Stick, Chromecast, smart TV)
-├── netlify.toml                # build + redirect SPA: /admin e /tv → index.html
+├── .node-version              # Node 22 para o build no Cloudflare Pages
 ├── tailwind.config.ts          # cores/fontes lendo as variáveis CSS do tema
 ├── .env.example                # VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY
 ├── public/
+│   ├── _headers                # Cloudflare Pages: sw.js sem cache, assets com cache longo
 │   ├── brand/                  # logos: Gatinder (cor/branco/ícone) e FecoVet (cor/branco)
 │   └── sw.js                   # service worker: cache das fotos e da lista (TV offline)
 ├── supabase/
@@ -70,7 +71,7 @@ gatinder/
 - **Ordem na TV:** pela ordem cadastrada, com campo `sort_order` pra fixar destaques depois.
 - Cadastro de funcionário é **fechado**: o dono cria os logins no painel do Supabase (passo a passo no fim do SQL).
 - **Identidade:** cores do logo Gatinder (degradê #FF7343 → #FE0679); FecoVet aparece como clínica parceira (topo da TV e tela de login). Verde FecoVet usado como cor de "sim/disponível".
-- **Deploy:** Netlify e Supabase em **contas próprias** do Gatinder (separadas da Opstage), auto-deploy a partir do GitHub.
+- **Deploy:** **Cloudflare Pages** e Supabase em **contas próprias** do Gatinder (separadas da Opstage), auto-deploy a partir do GitHub. *(Mudou: começou na Netlify, mas lá o plano grátis passou a exigir o selo "Powered by Netlify" em projetos novos, que apareceria na TV. O Cloudflare Pages é grátis, aceita uso comercial e não coloca selo. /admin e /tv abrem direto porque o Pages serve o index.html para qualquer rota quando não existe 404.html.)*
 - **Fontes:** Poppins (combina com o logo da FecoVet).
 - **Rotação:** como Fire Stick/Chromecast/smart TV não giram a imagem, a própria página gira com `/tv?girar=90` ou `?girar=270`.
 - **Ritmo da TV:** gato (tempo das Configurações) → próximo gato deslizando com "AMEI!"; "It's a Match!" a cada volta completa (mín. a cada 5 gatos); "Como funciona a adoção" a cada X minutos.
