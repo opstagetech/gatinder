@@ -77,7 +77,7 @@ export function TvScreen() {
   const catToCat = prev?.kind === 'cat' && cur.kind === 'cat';
 
   return (
-    <div className="h-[100dvh] w-screen overflow-hidden bg-black">
+    <div className="h-screen w-screen overflow-hidden bg-black">
       <TvStage fill rotate={rotate}>
         {/* tela que está saindo (some por baixo da nova) */}
         {prev && !catToCat && (

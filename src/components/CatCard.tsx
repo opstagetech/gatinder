@@ -42,7 +42,7 @@ export function AppChrome({ children, pulseKey }: { children?: ReactNode; pulseK
 
       {/* Botões decorativos do "app" */}
       <div
-        className="absolute inset-x-0 flex items-center justify-center gap-[64px]"
+        className="absolute inset-x-0 flex items-center justify-center [&>*]:mx-[32px]"
         style={{ top: CARD.top + CARD.height, height: 230 }}
       >
         <ActionButton size={160} className="text-nope">
@@ -91,7 +91,7 @@ export function CatProfile({
       <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-black/95 via-black/55 to-transparent" />
 
       {/* Selo */}
-      <div className="absolute right-[36px] top-[36px] flex items-center gap-[12px] rounded-full bg-white/95 px-[28px] py-[14px] text-[34px] font-extrabold text-brand shadow-lg">
+      <div className="absolute right-[36px] top-[36px] flex items-center rounded-full bg-white/95 [&>svg]:mr-[12px] px-[28px] py-[14px] text-[34px] font-extrabold text-brand shadow-lg">
         <StarIcon className="h-[36px] w-[36px]" /> Procurando um lar
       </div>
 
@@ -108,7 +108,7 @@ export function CatProfile({
           </span>
         </h2>
 
-        <div className="mt-[22px] flex flex-wrap items-center gap-[14px] whitespace-nowrap text-[34px] font-bold">
+        <div className="mt-[22px] flex flex-wrap items-center whitespace-nowrap text-[34px] font-bold [&>*]:mb-[14px] [&>*]:mr-[14px]">
           <Badge>
             <SexIcon className="h-[36px] w-[36px]" /> {SEX_LABEL[cat.sex]}
           </Badge>
@@ -123,7 +123,7 @@ export function CatProfile({
         </div>
 
         {cat.temperament.length > 0 && (
-          <div className="mt-[18px] flex flex-wrap gap-[14px]">
+          <div className="mt-[4px] flex flex-wrap [&>*]:mb-[14px] [&>*]:mr-[14px]">
             {cat.temperament.map((t) => (
               <span
                 key={t}
@@ -136,7 +136,7 @@ export function CatProfile({
         )}
 
         {cat.bio && (
-          <p className="mt-[24px] text-[42px] font-semibold leading-[1.3] opacity-95">“{cat.bio}”</p>
+          <p className="mt-[10px] text-[42px] font-semibold leading-[1.3] opacity-95">“{cat.bio}”</p>
         )}
       </div>
       {children}
@@ -158,7 +158,7 @@ function fem(sex: CatInput['sex'], word: string) {
 function Badge({ children, ok }: { children: React.ReactNode; ok?: boolean }) {
   const tone = ok === undefined ? 'bg-white/20' : ok ? 'bg-ok/90' : 'bg-white/15 text-white/85';
   return (
-    <span className={`flex items-center gap-[10px] rounded-full px-[20px] py-[8px] backdrop-blur ${tone}`}>
+    <span className={`flex items-center rounded-full px-[20px] py-[8px] backdrop-blur [&>svg]:mr-[10px] ${tone}`}>
       {children}
     </span>
   );

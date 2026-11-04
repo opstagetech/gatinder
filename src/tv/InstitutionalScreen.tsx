@@ -28,17 +28,17 @@ export function InstitutionalScreen({
           {settings.institutional_title}
         </h1>
 
-        <ol className={`mt-[56px] flex flex-col ${big ? 'gap-[30px]' : 'gap-[20px]'}`}>
+        <ol className={`mt-[56px] ${big ? '[&>li]:mb-[30px]' : '[&>li]:mb-[20px]'}`}>
           {steps.map((step, i) => (
             <li
               key={i}
-              className={`flex animate-pop-in items-center gap-[30px] rounded-[36px] bg-white text-ink shadow-[0_14px_40px_rgba(0,0,0,0.15)] ${
+              className={`flex animate-pop-in items-center rounded-[36px] bg-white text-ink shadow-[0_14px_40px_rgba(0,0,0,0.15)] ${
                 big ? 'px-[36px] py-[30px]' : 'px-[30px] py-[20px]'
               }`}
               style={{ animationDelay: `${300 + i * 350}ms` }}
             >
               <span
-                className={`flex shrink-0 items-center justify-center rounded-full bg-brand-gradient font-display font-extrabold text-white ${
+                className={`mr-[30px] flex shrink-0 items-center justify-center rounded-full bg-brand-gradient font-display font-extrabold text-white ${
                   big ? 'h-[100px] w-[100px] text-[56px]' : 'h-[80px] w-[80px] text-[44px]'
                 }`}
               >

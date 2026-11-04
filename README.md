@@ -19,7 +19,15 @@ O Gatinder usa **contas próprias** no Supabase e na Netlify, separadas da Opsta
    - `VITE_SUPABASE_ANON_KEY` = chave anon public
    
    e mandar publicar de novo (*Deploys → Trigger deploy*).
-5. Abrir `https://SEU-SITE.netlify.app/admin`, entrar com um login da equipe e cadastrar os gatos. A TV usa `https://SEU-SITE.netlify.app/tv` (veja [INSTRUCOES-TV.md](INSTRUCOES-TV.md)).
+5. **Liberar o Dr. Matheus no painel** (no Supabase do gatil):
+   1. *Authentication → Users → Add user → Create new user*: e-mail do Dr. Matheus + uma senha. Marque *Auto Confirm User*.
+   2. *SQL Editor*, rodar (trocando o e-mail):
+      ```sql
+      insert into staff (user_id, name)
+      select id, 'Dr. Matheus' from auth.users where email = 'email-do-matheus@exemplo.com';
+      ```
+   3. Passar o e-mail e a senha para ele. Para outra pessoa no futuro, é só repetir.
+6. Abrir `https://SEU-SITE.netlify.app/admin`, entrar com um login da equipe e cadastrar os gatos. A TV usa `https://SEU-SITE.netlify.app/tv` (veja [INSTRUCOES-TV.md](INSTRUCOES-TV.md)).
 
 > **Plano grátis do Supabase:** projetos sem nenhum uso por 7 dias são pausados. Com a TV ligada consultando o banco todo dia isso não acontece, mas se a loja ficar fechada mais de uma semana (férias), entre no painel do Supabase e clique em *Restore* se o projeto tiver pausado.
 

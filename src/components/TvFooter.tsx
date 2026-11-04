@@ -7,8 +7,8 @@ export function TvFooter({ settings }: { settings: Pick<Settings, 'whatsapp_numb
   const link = settings ? whatsappLink(settings.whatsapp_number, settings.whatsapp_message) : null;
 
   return (
-    <div className="absolute inset-x-0 bottom-0 flex h-[260px] items-center gap-[36px] bg-brand-gradient px-[56px] font-body text-brand-ink">
-      <div className="min-w-0 flex-1">
+    <div className="absolute inset-x-0 bottom-0 flex h-[260px] items-center bg-brand-gradient px-[56px] font-body text-brand-ink">
+      <div className="mr-[36px] min-w-0 flex-1">
         <div className="font-display text-[72px] font-bold leading-[1.05]">Quer me adotar?</div>
         <div className="mt-[12px] text-[38px] font-bold leading-tight opacity-95">
           Fale com a equipe aqui na loja

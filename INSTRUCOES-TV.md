@@ -28,11 +28,28 @@ A TV vai ficar **na vertical**, dentro da moldura de celular. A maioria dos apar
 
 ---
 
-## 2. Qual aparelho usar
+## 2. Primeiro: descobrir que smart TV é
 
-### ⭐ Recomendado: Fire TV Stick + app "Fully Kiosk Browser"
+A TV da loja é uma **smart TV de 32"**. O caminho depende do sistema dela. Para descobrir, veja a marca na frente/atrás da TV e o nome que aparece no menu inicial:
+
+| O que aparece | Sistema | O que fazer |
+|---|---|---|
+| "Google TV" ou "Android TV" (comum em TCL, Philco, Semp, Philips, Multilaser, Sony) | Android | 👍 Melhor caso: instale o **Downloader** pela Play Store da própria TV e siga os passos do **Fully Kiosk** abaixo. Não precisa comprar nada. |
+| Samsung (sistema "Tizen") | Tizen | Teste o navegador **Internet** da TV (passo 4). Se travar ou não ficar bom, use um Fire TV Stick. |
+| LG (sistema "webOS") | webOS | Teste o **Navegador da Web** da TV (passo 4). Se travar ou não ficar bom, use um Fire TV Stick. |
+| Roku TV (comum em AOC, Philco, Semp) | Roku | ❌ Não tem navegador. Precisa de um **Fire TV Stick** (ou outro aparelho) no HDMI. |
+
+**Se precisar comprar um aparelho:** um **Fire TV Stick** (o modelo mais simples, "Lite", já serve) ligado no HDMI da TV.
+
+> Uma TV de 32" geralmente tem resolução HD (1366×768). Tudo bem: a página se ajusta sozinha a qualquer resolução.
+
+## 3. Instalar
+
+### ⭐ Recomendado: app "Fully Kiosk Browser" (TV com Android/Google TV ou Fire TV Stick)
 
 É a opção mais confiável: a página abre sozinha quando liga a TV, a tela não apaga e ninguém consegue sair dela por engano.
+
+**Na TV com Android/Google TV:** instale o **Downloader** pela Play Store da TV e pule para o passo 5 abaixo (se a TV pedir, permita que o Downloader instale apps).
 
 **Preparar o Fire Stick (uma vez):**
 1. Ligue o Fire Stick e conecte no Wi-Fi da loja.
@@ -66,17 +83,17 @@ Mesma ideia do Fire Stick: instale o **Downloader** pela Play Store da TV, baixe
 
 > O Chromecast antigo (aquele "pendurado" no HDMI, sem controle remoto) **não serve**: ele só espelha uma aba aberta num computador, que teria de ficar ligado.
 
-### Alternativa: navegador da própria smart TV (Samsung, LG…)
+### Navegador da própria smart TV (Samsung, LG…)
 
 1. Abra o navegador da TV (Samsung: "Internet"; LG: "Navegador da Web").
 2. Digite o endereço e salve nos favoritos.
 3. Desligue **Economia de energia**, **Desligamento automático** e **Proteção de tela** nas configurações da TV.
 
-É a opção mais limitada: alguns navegadores de TV são antigos, não guardam nada para rodar sem internet e às vezes mostram avisos por cima da página. Use só se não der para ter um Fire Stick.
+A página foi preparada para funcionar também em navegadores de TV mais antigos. Ainda assim, é a opção mais limitada: alguns navegadores não guardam nada para rodar sem internet, não reabrem sozinhos quando a TV liga e às vezes mostram avisos por cima da página. Teste por um dia; se der problema, use um Fire TV Stick.
 
 ---
 
-## 3. Ajustes da TV
+## 4. Ajustes da TV
 
 - **Desligar sozinha / ligar sozinha:** use o timer da própria TV (Configurações → Geral → Hora → Timer de ligar/desligar), para ela ligar quando a loja abre e desligar quando fecha. Com o Fully Kiosk em "Launch on Boot", a vitrine volta sozinha.
 - **HDMI-CEC** (Anynet+ na Samsung, SimpLink na LG, Bravia Sync na Sony): ligado, para o Fire Stick ligar junto com a TV.
@@ -84,14 +101,12 @@ Mesma ideia do Fire Stick: instale o **Downloader** pela Play Store da TV, baixe
 
 ---
 
-## 4. Conferência rápida (depois de instalar)
+## 5. Conferência rápida (depois de instalar)
 
-1. A TV mostra um gato com o logo do Gatinder em cima, **em pé** e sem nada cortado pela moldura.
+1. A TV mostra um gato com o logo do Gatinder em cima, **em pé**, com a tela inteira aparecendo (a moldura de PVC cobre só a borda da TV, não a imagem).
 2. No celular, pelo painel, mude o status de um gato para "Adotado". Em poucos segundos ele some da TV.
 3. Aponte a câmera do celular para o QR code: deve abrir o WhatsApp da loja com a mensagem pronta.
 4. Desligue o Wi-Fi por 1 minuto: a TV continua passando os gatos (aparece um aviso pequenininho "sem internet" no topo). Religue.
-
-Se a moldura de PVC cobrir alguma borda (logo, QR code), me avise a medida, que eu afasto o conteúdo das bordas.
 
 ---
 
