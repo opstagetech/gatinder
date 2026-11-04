@@ -50,9 +50,6 @@ export function TvStage({ children, fill = false, rotate = 0 }: { children: Reac
           transform: `translate(-50%, -50%) rotate(${rotate}deg) scale(${scale})`,
           transformOrigin: 'center',
           visibility: scale ? 'visible' : 'hidden',
-          // cantos arredondados como os da moldura de celular (theme.css: --tv-corner)
-          borderRadius: 'var(--tv-corner)',
-          overflow: 'hidden',
         }}
       >
         {children}
