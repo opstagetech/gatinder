@@ -12,11 +12,11 @@ Estrutura e decisões: [ESTRUTURA.md](ESTRUTURA.md). Banco: [supabase/migrations
 O Gatinder usa **contas próprias** no Supabase e na Netlify, separadas da Opstage. Crie as duas com o e-mail do gatil, usando **e-mail e senha** (não "Entrar com GitHub"), para não misturar com as contas que já existem.
 
 1. **Supabase** (conta nova, em supabase.com): criar o projeto do gatil (região *South America (São Paulo)*), abrir o *SQL Editor*, colar e rodar o `0001_gatinder.sql`. Depois seguir os 3 passos do fim do arquivo (desligar cadastro aberto, criar logins, colocar na tabela `staff`).
-2. **Supabase → Project Settings → API**: copiar a *Project URL* e a chave *anon public*.
+2. **Supabase → Project Settings → API**: copiar a *Project URL* e a *Publishable key* (`sb_publishable_…`). Nunca use a *Secret key*.
 3. **Netlify** (conta nova, em netlify.com): *Add new site → Import an existing project → GitHub*. A Netlify vai pedir para autorizar o acesso ao GitHub: autorize e dê acesso ao repositório `gatinder`. O `netlify.toml` já cuida do build.
 4. **Netlify → Site configuration → Environment variables**: criar
    - `VITE_SUPABASE_URL` = Project URL
-   - `VITE_SUPABASE_ANON_KEY` = chave anon public
+   - `VITE_SUPABASE_ANON_KEY` = Publishable key
    
    e mandar publicar de novo (*Deploys → Trigger deploy*).
 5. **Liberar o Dr. Matheus no painel** (no Supabase do gatil):
