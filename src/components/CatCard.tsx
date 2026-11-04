@@ -35,9 +35,9 @@ export function AppChrome({ children, pulseKey }: { children?: ReactNode; pulseK
   return (
     <div className="absolute inset-0 overflow-hidden bg-surface font-body">
       {/* Barra do app: Gatinder + clínica parceira */}
-      <div className="absolute inset-x-0 top-0 flex h-[150px] items-center justify-between px-[44px]">
-        <img src={BRAND.gatinderLogo} alt="Gatinder" className="h-[92px] w-auto" />
-        <img src={BRAND.fecovetLogo} alt="FecoVet" className="h-[74px] w-auto" />
+      <div className="absolute inset-x-0 top-0 flex h-[150px] items-center justify-between px-[var(--tv-safe-x)] pt-[8px]">
+        <img src={BRAND.gatinderLogo} alt="Gatinder" className="h-[84px] w-auto" />
+        <img src={BRAND.fecovetLogo} alt="FecoVet" className="h-[68px] w-auto" />
       </div>
 
       {/* Botões decorativos do "app" */}
