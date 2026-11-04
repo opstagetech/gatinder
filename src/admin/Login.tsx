@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { supabase } from '../lib/supabase';
 import { friendlyError } from '../lib/api';
 import { BRAND } from '../theme/brand';
+import { loginToEmail } from '../lib/login';
 import { Button, ErrorBox, Field, inputClass } from './ui';
 
 export function Login() {
@@ -14,7 +15,7 @@ export function Login() {
     e.preventDefault();
     setBusy(true);
     setError(null);
-    const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
+    const { error } = await supabase.auth.signInWithPassword({ email: loginToEmail(email), password });
     if (error) setError(friendlyError(error));
     setBusy(false);
   }
@@ -29,10 +30,13 @@ export function Login() {
       </div>
 
       <form onSubmit={submit} className="w-full max-w-sm space-y-5">
-        <Field label="E-mail">
+        <Field label="Usuário ou e-mail">
           <input
-            type="email"
+            type="text"
             inputMode="email"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck={false}
             autoComplete="username"
             required
             value={email}

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import type { Session } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabase';
+import { emailToLogin } from '../lib/login';
 import { Login } from './Login';
 import { Button, Spinner } from './ui';
 
@@ -44,7 +45,7 @@ export function AdminLayout() {
         <p className="text-muted">
           {access === 'error'
             ? 'Confira a internet e tente de novo.'
-            : `Você entrou como ${session.user.email}, mas ainda não está na lista da equipe. Peça ao responsável para liberar.`}
+            : `Você entrou como ${emailToLogin(session.user.email)}, mas ainda não está na lista da equipe. Peça ao responsável para liberar.`}
         </p>
         {access === 'error' && <Button onClick={() => location.reload()}>Tentar de novo</Button>}
         <Button variant="secondary" onClick={() => supabase.auth.signOut()}>

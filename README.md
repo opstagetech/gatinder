@@ -21,6 +21,7 @@ O Gatinder usa **contas próprias** no Supabase e na Netlify, separadas da Opsta
    e mandar publicar de novo (*Deploys → Trigger deploy*).
 5. **Liberar o Dr. Matheus no painel** (no Supabase do gatil):
    1. *Authentication → Users → Add user → Create new user*: e-mail do Dr. Matheus + uma senha. Marque *Auto Confirm User*.
+      **Sem e-mail?** Use um "usuário" no formato `matheus@gatinder.local`. No painel, ele entra digitando só `matheus` e a senha. (Esse e-mail não existe; como ninguém recebe nada nele, a troca de senha é feita por você no Supabase.)
    2. *SQL Editor*, rodar (trocando o e-mail):
       ```sql
       insert into staff (user_id, name)
