@@ -74,4 +74,5 @@ gatinder/
 - **Deploy:** **Cloudflare Pages** e Supabase em **contas próprias** do Gatinder (separadas da Opstage), auto-deploy a partir do GitHub. *(Mudou: começou na Netlify, mas lá o plano grátis passou a exigir o selo "Powered by Netlify" em projetos novos, que apareceria na TV. O Cloudflare Pages é grátis, aceita uso comercial e não coloca selo. /admin e /tv abrem direto porque o Pages serve o index.html para qualquer rota quando não existe 404.html.)*
 - **Fontes:** Poppins (combina com o logo da FecoVet).
 - **Rotação:** como Fire Stick/Chromecast/smart TV não giram a imagem, a própria página gira com `/tv?girar=90` ou `?girar=270`.
+- **Moldura de PVC:** passa por cima dos cantos da TV. A imagem continua retangular; logos, rodapé e QR ficam a `--tv-safe-x` (100px) das laterais.
 - **Ritmo da TV:** gato (tempo das Configurações) → próximo gato deslizando com "AMEI!"; "It's a Match!" a cada volta completa (mín. a cada 5 gatos); "Como funciona a adoção" a cada X minutos.

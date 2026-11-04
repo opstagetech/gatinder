@@ -5,7 +5,7 @@ Vitrine de adoção do gatil na TV da loja, no estilo de app de namoro.
 - **/admin**: painel da equipe (celular). Cadastra gatos, fotos e configurações.
 - **/tv**: tela da TV em pé, sem botões, passando os gatos disponíveis em loop. Como instalar na TV: [INSTRUCOES-TV.md](INSTRUCOES-TV.md).
 
-Estrutura e decisões: [ESTRUTURA.md](ESTRUTURA.md). Banco: [supabase/migrations/0001_gatinder.sql](supabase/migrations/0001_gatinder.sql).
+Registro completo do processo (contas, endereços, operação, manutenção): [PROCESSO.md](PROCESSO.md). Estrutura e decisões: [ESTRUTURA.md](ESTRUTURA.md). Banco: [supabase/migrations/0001_gatinder.sql](supabase/migrations/0001_gatinder.sql).
 
 ## Colocar no ar (uma vez)
 
