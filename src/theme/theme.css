@@ -1,0 +1,57 @@
+/* =====================================================================
+   ⭐ TEMA DO GATINDER — o ÚNICO lugar com cores e fontes.
+   Cores do logo Gatinder (degradê laranja → pink) + cores da FecoVet.
+   Logos: src/theme/brand.ts. Fontes: aqui e no <head> do index.html.
+
+   Cores em "R G B" (sem vírgula) para o Tailwind aplicar transparência.
+   Dica: converta um hex em https://www.rgbtohex.net/hex-to-rgb/
+   ===================================================================== */
+:root {
+  /* Marca Gatinder (degradê do ícone do logo) */
+  --brand: 254 6 121;      /* #FE0679 pink    */
+  --brand-2: 255 115 67;   /* #FF7343 laranja */
+  --brand-ink: 255 255 255;/* texto sobre a marca */
+
+  /* Clínica parceira FecoVet */
+  --fecovet-red: 217 92 92;    /* #D95C5C */
+  --fecovet-green: 77 165 140; /* #4DA58C */
+
+  /* Ações do "app" */
+  --like: 254 6 121;       /* coração */
+  --nope: 140 150 165;     /* X */
+  --ok: 77 165 140;        /* sim / disponível (verde FecoVet) */
+  --warn: 245 158 11;      /* em processo */
+
+  /* Base */
+  --bg: 250 247 245;
+  --surface: 255 255 255;
+  --ink: 17 17 17;
+  --muted: 112 106 120;
+  --line: 230 224 222;
+
+  /* Fontes */
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Poppins', system-ui, sans-serif;
+
+  /* Formas */
+  --radius-card: 28px;
+}
+
+body {
+  margin: 0;
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Degradê da marca, usado em botões e destaques */
+.bg-brand-gradient {
+  background-image: linear-gradient(45deg, rgb(var(--brand-2)) 0%, rgb(var(--brand)) 100%);
+}
+.text-brand-gradient {
+  background-image: linear-gradient(45deg, rgb(var(--brand-2)) 0%, rgb(var(--brand)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
