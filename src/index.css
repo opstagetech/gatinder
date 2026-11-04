@@ -3,3 +3,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Tela da TV: sem cursor, sem seleção, sem rolagem */
+html.kiosk,
+html.kiosk * {
+  cursor: none !important;
+  user-select: none;
+}
+html.kiosk body {
+  overflow: hidden;
+  background: #000;
+}

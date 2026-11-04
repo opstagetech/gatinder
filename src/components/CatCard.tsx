@@ -1,3 +1,4 @@
+import type { CSSProperties, ReactNode } from 'react';
 import type { CatInput } from '../types';
 import { BRAND } from '../theme/brand';
 import { formatAge, SEX_LABEL, TEMPERAMENT_EMOJI, temperamentLabel } from '../lib/format';
@@ -18,79 +19,25 @@ import { CheckIcon, ClockIcon, FemaleIcon, HeartIcon, MaleIcon, StarIcon, XIcon 
 export const CARD = { top: 150, left: 28, width: 1024, height: 1280 } as const;
 
 export function CatCard({ cat, photo }: { cat: CatInput; photo: string | null }) {
-  const SexIcon = cat.sex === 'femea' ? FemaleIcon : MaleIcon;
+  return (
+    <AppChrome>
+      <CatProfile cat={cat} photo={photo} />
+    </AppChrome>
+  );
+}
 
+/**
+ * A "moldura do app" que fica parada: fundo, barra com os logos e os botões ✕ ★ ❤.
+ * O(s) card(s) entram como filhos (na TV, eles deslizam por cima).
+ * Quando `pulseKey` muda, o coração "pulsa" (como se alguém tivesse dado like).
+ */
+export function AppChrome({ children, pulseKey }: { children?: ReactNode; pulseKey?: string }) {
   return (
     <div className="absolute inset-0 overflow-hidden bg-surface font-body">
       {/* Barra do app: Gatinder + clínica parceira */}
       <div className="absolute inset-x-0 top-0 flex h-[150px] items-center justify-between px-[44px]">
         <img src={BRAND.gatinderLogo} alt="Gatinder" className="h-[92px] w-auto" />
         <img src={BRAND.fecovetLogo} alt="FecoVet" className="h-[74px] w-auto" />
-      </div>
-
-      {/* O card (foto) */}
-      <div
-        className="absolute overflow-hidden rounded-[52px] bg-ink shadow-[0_30px_80px_rgba(0,0,0,0.35)]"
-        style={{ top: CARD.top, left: CARD.left, width: CARD.width, height: CARD.height }}
-      >
-        {photo ? (
-          <img src={photo} alt={cat.name} className="absolute inset-0 h-full w-full object-cover" />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center bg-brand-gradient text-[320px]">🐱</div>
-        )}
-
-        {/* Degradê para o texto ficar legível */}
-        <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-black/95 via-black/55 to-transparent" />
-
-        {/* Selo */}
-        <div className="absolute right-[36px] top-[36px] flex items-center gap-[12px] rounded-full bg-white/95 px-[28px] py-[14px] text-[34px] font-extrabold text-brand shadow-lg">
-          <StarIcon className="h-[36px] w-[36px]" /> Procurando um lar
-        </div>
-
-        <div className="absolute inset-x-0 bottom-0 px-[56px] pb-[52px] text-white">
-          <h2
-            className="flex flex-wrap items-baseline font-display leading-[1.05]"
-            style={{ textShadow: '0 4px 24px rgba(0,0,0,.4)' }}
-          >
-            <span className="break-words font-bold" style={{ fontSize: nameSize(cat.name) }}>
-              {cat.name || 'Nome'},
-            </span>
-            <span className="whitespace-nowrap pl-[20px] text-[76px] font-semibold opacity-95">
-              {formatAge(cat.age_months)}
-            </span>
-          </h2>
-
-          <div className="mt-[22px] flex flex-wrap items-center gap-[14px] whitespace-nowrap text-[34px] font-bold">
-            <Badge>
-              <SexIcon className="h-[36px] w-[36px]" /> {SEX_LABEL[cat.sex]}
-            </Badge>
-            <Badge ok={cat.neutered}>
-              {cat.neutered ? <CheckIcon className="h-[34px] w-[34px]" /> : <ClockIcon className="h-[34px] w-[34px]" />}
-              {cat.neutered ? fem(cat.sex, 'Castrado') : `Não ${fem(cat.sex, 'castrado')}`}
-            </Badge>
-            <Badge ok={cat.vaccinated}>
-              {cat.vaccinated ? <CheckIcon className="h-[34px] w-[34px]" /> : <ClockIcon className="h-[34px] w-[34px]" />}
-              {cat.vaccinated ? fem(cat.sex, 'Vacinado') : `Não ${fem(cat.sex, 'vacinado')}`}
-            </Badge>
-          </div>
-
-          {cat.temperament.length > 0 && (
-            <div className="mt-[18px] flex flex-wrap gap-[14px]">
-              {cat.temperament.map((t) => (
-                <span
-                  key={t}
-                  className="whitespace-nowrap rounded-full border-[3px] border-white/75 px-[22px] py-[6px] text-[32px] font-bold"
-                >
-                  {TEMPERAMENT_EMOJI[t]} {temperamentLabel(t, cat.sex)}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {cat.bio && (
-            <p className="mt-[24px] text-[42px] font-semibold leading-[1.3] opacity-95">“{cat.bio}”</p>
-          )}
-        </div>
       </div>
 
       {/* Botões decorativos do "app" */}
@@ -104,10 +51,95 @@ export function CatCard({ cat, photo }: { cat: CatInput; photo: string | null })
         <ActionButton size={124} className="text-sky-500">
           <StarIcon className="h-[60px] w-[60px]" />
         </ActionButton>
-        <ActionButton size={180} className="text-like">
+        <ActionButton key={pulseKey} size={180} className={`text-like ${pulseKey ? 'animate-like-pulse' : ''}`}>
           <HeartIcon className="h-[96px] w-[96px]" />
         </ActionButton>
       </div>
+
+      {children}
+    </div>
+  );
+}
+
+/** Só o card com a foto e as informações (é ele que "desliza" na TV) */
+export function CatProfile({
+  cat,
+  photo,
+  className = '',
+  style,
+  children,
+}: {
+  cat: CatInput;
+  photo: string | null;
+  className?: string;
+  style?: CSSProperties;
+  children?: ReactNode;
+}) {
+  const SexIcon = cat.sex === 'femea' ? FemaleIcon : MaleIcon;
+  return (
+    <div
+      className={`absolute overflow-hidden rounded-[52px] bg-ink shadow-[0_30px_80px_rgba(0,0,0,0.35)] ${className}`}
+      style={{ top: CARD.top, left: CARD.left, width: CARD.width, height: CARD.height, ...style }}
+    >
+      {photo ? (
+        <img src={photo} alt={cat.name} crossOrigin="anonymous" className="absolute inset-0 h-full w-full object-cover" />
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center bg-brand-gradient text-[320px]">🐱</div>
+      )}
+
+      {/* Degradê para o texto ficar legível */}
+      <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-black/95 via-black/55 to-transparent" />
+
+      {/* Selo */}
+      <div className="absolute right-[36px] top-[36px] flex items-center gap-[12px] rounded-full bg-white/95 px-[28px] py-[14px] text-[34px] font-extrabold text-brand shadow-lg">
+        <StarIcon className="h-[36px] w-[36px]" /> Procurando um lar
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 px-[56px] pb-[52px] text-white">
+        <h2
+          className="flex flex-wrap items-baseline font-display leading-[1.05]"
+          style={{ textShadow: '0 4px 24px rgba(0,0,0,.4)' }}
+        >
+          <span className="break-words font-bold" style={{ fontSize: nameSize(cat.name) }}>
+            {cat.name || 'Nome'},
+          </span>
+          <span className="whitespace-nowrap pl-[20px] text-[76px] font-semibold opacity-95">
+            {formatAge(cat.age_months)}
+          </span>
+        </h2>
+
+        <div className="mt-[22px] flex flex-wrap items-center gap-[14px] whitespace-nowrap text-[34px] font-bold">
+          <Badge>
+            <SexIcon className="h-[36px] w-[36px]" /> {SEX_LABEL[cat.sex]}
+          </Badge>
+          <Badge ok={cat.neutered}>
+            {cat.neutered ? <CheckIcon className="h-[34px] w-[34px]" /> : <ClockIcon className="h-[34px] w-[34px]" />}
+            {cat.neutered ? fem(cat.sex, 'Castrado') : `Não ${fem(cat.sex, 'castrado')}`}
+          </Badge>
+          <Badge ok={cat.vaccinated}>
+            {cat.vaccinated ? <CheckIcon className="h-[34px] w-[34px]" /> : <ClockIcon className="h-[34px] w-[34px]" />}
+            {cat.vaccinated ? fem(cat.sex, 'Vacinado') : `Não ${fem(cat.sex, 'vacinado')}`}
+          </Badge>
+        </div>
+
+        {cat.temperament.length > 0 && (
+          <div className="mt-[18px] flex flex-wrap gap-[14px]">
+            {cat.temperament.map((t) => (
+              <span
+                key={t}
+                className="whitespace-nowrap rounded-full border-[3px] border-white/75 px-[22px] py-[6px] text-[32px] font-bold"
+              >
+                {TEMPERAMENT_EMOJI[t]} {temperamentLabel(t, cat.sex)}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {cat.bio && (
+          <p className="mt-[24px] text-[42px] font-semibold leading-[1.3] opacity-95">“{cat.bio}”</p>
+        )}
+      </div>
+      {children}
     </div>
   );
 }
@@ -139,6 +171,18 @@ function ActionButton({ children, className, size }: { children: React.ReactNode
       style={{ width: size, height: size }}
     >
       {children}
+    </div>
+  );
+}
+
+/** Carimbo "AMEI!" que aparece no card quando ele desliza para a direita (like) */
+export function LikeStamp() {
+  return (
+    <div
+      className="absolute left-[60px] top-[90px] animate-stamp-in rounded-[24px] border-[10px] border-like px-[34px] py-[6px] font-display text-[120px] font-extrabold uppercase leading-none tracking-wider text-like opacity-0"
+      style={{ animationDelay: '250ms', background: 'rgba(255,255,255,0.12)' }}
+    >
+      Amei!
     </div>
   );
 }

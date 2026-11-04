@@ -5,6 +5,7 @@
 ```
 gatinder/
 ├── index.html                  # translate="no", fontes
+├── INSTRUCOES-TV.md            # Etapa 4: como abrir a /tv na TV (Fire Stick, Chromecast, smart TV)
 ├── netlify.toml                # build + redirect SPA: /admin e /tv → index.html
 ├── tailwind.config.ts          # cores/fontes lendo as variáveis CSS do tema
 ├── .env.example                # VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY
@@ -38,7 +39,7 @@ gatinder/
     │   ├── Preview.tsx         # tela da TV em pé, em escala, idêntica à TV
     │   └── Settings.tsx        # WhatsApp, tempo por gato, textos da tela institucional
     └── tv/
-        ├── TvScreen.tsx        # loop, transição de "deslizar", rodapé com QR
+        ├── TvScreen.tsx        # loop, transição de "deslizar" com carimbo AMEI!, rodapé com QR, ?girar=90/270
         ├── MatchScreen.tsx     # "It's a Match!" de tempos em tempos
         ├── InstitutionalScreen.tsx
         ├── useCatsFeed.ts      # Realtime + polling 1 min + cache local
@@ -69,4 +70,7 @@ gatinder/
 - **Ordem na TV:** pela ordem cadastrada, com campo `sort_order` pra fixar destaques depois.
 - Cadastro de funcionário é **fechado**: o dono cria os logins no painel do Supabase (passo a passo no fim do SQL).
 - **Identidade:** cores do logo Gatinder (degradê #FF7343 → #FE0679); FecoVet aparece como clínica parceira (topo da TV e tela de login). Verde FecoVet usado como cor de "sim/disponível".
-- **Deploy:** Netlify, conta própria do Gatinder, auto-deploy a partir do GitHub.
+- **Deploy:** Netlify e Supabase em **contas próprias** do Gatinder (separadas da Opstage), auto-deploy a partir do GitHub.
+- **Fontes:** Poppins (combina com o logo da FecoVet).
+- **Rotação:** como Fire Stick/Chromecast/smart TV não giram a imagem, a própria página gira com `/tv?girar=90` ou `?girar=270`.
+- **Ritmo da TV:** gato (tempo das Configurações) → próximo gato deslizando com "AMEI!"; "It's a Match!" a cada volta completa (mín. a cada 5 gatos); "Como funciona a adoção" a cada X minutos.

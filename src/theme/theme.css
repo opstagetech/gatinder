@@ -30,8 +30,8 @@
   --line: 230 224 222;
 
   /* Fontes */
-  --font-display: 'Fredoka', 'Nunito', system-ui, sans-serif;
-  --font-body: 'Nunito', system-ui, sans-serif;
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Poppins', system-ui, sans-serif;
 
   /* Formas */
   --radius-card: 28px;

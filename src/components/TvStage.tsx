@@ -9,7 +9,14 @@ export const STAGE_H = 1920;
  * A TV e a pré-visualização usam o mesmo palco: o que aparece em uma
  * é exatamente o que aparece na outra.
  */
-export function TvStage({ children, fill = false }: { children: ReactNode; fill?: boolean }) {
+export type Rotation = 0 | 90 | 180 | 270;
+
+/**
+ * `rotate` gira o palco inteiro. Serve para aparelhos (Fire Stick, Chromecast,
+ * smart TV) que não sabem girar a imagem sozinhos: a TV fica em pé, o aparelho
+ * continua achando que está deitada, e a página gira por conta própria.
+ */
+export function TvStage({ children, fill = false, rotate = 0 }: { children: ReactNode; fill?: boolean; rotate?: Rotation }) {
   const outer = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0);
 
@@ -18,13 +25,16 @@ export function TvStage({ children, fill = false }: { children: ReactNode; fill?
     if (!el) return;
     const update = () => {
       const r = el.getBoundingClientRect();
-      setScale(Math.min(r.width / STAGE_W, r.height / STAGE_H));
+      const sideways = rotate === 90 || rotate === 270;
+      const w = sideways ? r.height : r.width;
+      const h = sideways ? r.width : r.height;
+      setScale(Math.min(w / STAGE_W, h / STAGE_H));
     };
     update();
     const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
+  }, [rotate]);
 
   return (
     <div
@@ -37,7 +47,7 @@ export function TvStage({ children, fill = false }: { children: ReactNode; fill?
         style={{
           width: STAGE_W,
           height: STAGE_H,
-          transform: `translate(-50%, -50%) scale(${scale})`,
+          transform: `translate(-50%, -50%) rotate(${rotate}deg) scale(${scale})`,
           transformOrigin: 'center',
           visibility: scale ? 'visible' : 'hidden',
         }}
